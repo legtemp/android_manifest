@@ -2,11 +2,34 @@
 <manifest>
 
   <remote  name="aosp"
-           fetch=".."
+           fetch="https://android.googlesource.com/"
            review="https://android-review.googlesource.com/" />
+
   <default revision="refs/tags/android-12.0.0_r32"
            remote="aosp"
-           sync-j="4" />
+           sync-j="4"
+           sync-c="true"
+           sync-d="true"
+           sync-f="true"/>
+
+  <remote  name="github"
+           fetch="https://github.com/" />
+
+  <remote  name="gitlab"
+           fetch="https://gitlab.com/" />
+
+  <remote  name="legion"
+           fetch="https://github.com/legtemp"
+           revision="refs/heads/12.0" />
+
+  <remote  name="arrow"
+           fetch="https://github.com/ArrowOS"
+           review="https://review.arrowos.net/"
+           revision="refs/heads/arrow-12.0" />
+
+  <remote  name="legion-gitlab"
+           fetch="https://gitlab.com/LegionOSOfficial"
+           revision="refs/heads/12.0" />
 
   <superproject name="platform/superproject" remote="aosp" revision="android-12.0.0_r32" />
   <contactinfo bugurl="go/repo-bug" />
@@ -1102,5 +1125,10 @@
   <project path="tools/trebuchet" name="platform/tools/trebuchet" groups="tools,cts,pdk,pdk-cw-fs,pdk-fs" />
 
   <repo-hooks in-project="platform/tools/repohooks" enabled-list="pre-upload" />
+
+  <!-- LegionOS changes -->
+  <include name="remove.xml" />
+  <include name="arrow.xml" />
+  <include name="legion.xml" />
 
 </manifest>
